@@ -1,12 +1,17 @@
 <template lang="pug">
   #app
     img(src='https://vicmmendoza.github.io/vicmusic/assets/logo.png')
-    h1 PlatziMusic
-    select(v-model="selectedCountry")
-      option(v-for="country in countries" v-bind:value="country.value") {{ country.name }}
+    h1 Music
+    <div class="col-md-4 offset-md-4">
+        <b-form-select v-model="selectedCountry" :options="options" class="mb-3">
+        </b-form-select>
+    </div>
     spinner(v-show="loading")
-    ul
-      artist(v-for="artist in artists" v-bind:artist="artist" v-bind:key="artist.mbid")
+    <div class="row">
+      <div class="d-flex flex-wrap">
+        artist(v-for="artist in artists" v-bind:artist="artist" v-bind:key="artist.mbid")
+      </div>
+    </div>
 </template>
 
 <script>
@@ -19,10 +24,10 @@ export default {
   data () {
     return {
       artists: [],
-      countries: [
-        { name: 'Argentina', value: 'argentina' },
-        { name: 'Colombia', value: 'colombia' },
-        { name: 'España', value: 'spain' },
+      options: [
+        { text: 'Argentina', value: 'argentina' },
+        { text: 'Colombia', value: 'colombia' },
+        { text: 'España', value: 'spain' },
       ],
       selectedCountry: 'argentina',
       loading: true
