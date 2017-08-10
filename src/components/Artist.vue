@@ -1,7 +1,15 @@
-<template lang="pug">
-  li.artist
-    h2: a(:href="artist.url" target="_blank") {{ artist.name }}
-    img(:src="artist.image[2]['#text']")
+<template>
+  	<div class="p-4">
+	  <b-card :title="artist.name"
+	          :img="artist.image[2]['#text']"
+	          :img-alt="artist.name"
+	          tag="article"
+	          style="width: 20rem;"
+	          class="mb-2">
+	    <b-button :href="artist.url" target="_blank" variant="primary">Acceso Lastfm</b-button>
+	  </b-card>
+	</div>
+  
 </template>
 
 <script>
